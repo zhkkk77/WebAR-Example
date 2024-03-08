@@ -1,66 +1,49 @@
 <!DOCTYPE html>
-<html>
+
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 7.6.3.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="00:00:00"/>
-	<style type="text/css">
-		@page { size: 8.5in 11in; margin: 0.79in }
-		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
-		pre { background: transparent }
-		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
-		pre.cjk { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 10pt }
-		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
-	</style>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>AR project template</title>
+    <!-- Додаємо необхідні бібліотеки -->
+    <script src="js/three.js"></script>
+    <script src="js/tween.umd.js"></script>
+    <script src='loaders/GLTFLoader.js'></script>
+    <script src='loaders/GLTF2Loader.js'></script>
+    <script src='loaders/MTLLoader.js'></script>
+    <script src='loaders/OBJLoader.js'></script>
+    <!-- Додаємо jsartookit -->
+    <script src="jsartoolkit5/artoolkit.min.js"></script>
+    <script src="jsartoolkit5/artoolkit.api.js"></script>
+    <!-- Додаємо threex.artoolkit -->
+    <script src="threex/threex-artoolkitsource.js"></script>
+    <script src="threex/threex-artoolkitcontext.js"></script>
+    <script src="threex/threex-arbasecontrols.js"></script>
+    <script src="threex/threex-armarkercontrols.js"></script>
 </head>
-<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;
 
-&lt;head&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0&quot;&gt;
-    &lt;title&gt;AR project template&lt;/title&gt;
-    &lt;!-- Додаємо необхідні бібліотеки --&gt;
-    &lt;script src=&quot;js/three.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;js/tween.umd.js&quot;&gt;&lt;/script&gt;
-    &lt;script src='loaders/GLTFLoader.js'&gt;&lt;/script&gt;
-    &lt;script src='loaders/GLTF2Loader.js'&gt;&lt;/script&gt;
-    &lt;script src='loaders/MTLLoader.js'&gt;&lt;/script&gt;
-    &lt;script src='loaders/OBJLoader.js'&gt;&lt;/script&gt;
-    &lt;!-- Додаємо jsartookit --&gt;
-    &lt;script src=&quot;jsartoolkit5/artoolkit.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;jsartoolkit5/artoolkit.api.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- Додаємо threex.artoolkit --&gt;
-    &lt;script src=&quot;threex/threex-artoolkitsource.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;threex/threex-artoolkitcontext.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;threex/threex-arbasecontrols.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;threex/threex-armarkercontrols.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
+<body style='margin : 0px; overflow: hidden; font-family: Monospace; user-select: none; pointer-events: none;'>
 
-&lt;body style='margin : 0px; overflow: hidden; font-family: Monospace; user-select: none; pointer-events: none;'&gt;
-
-    &lt;div id=&quot;access&quot; style=&quot;top: 0; left: 0; right:0; bottom: 0; background: #000; position: absolute; user-select: all; pointer-events: all;&quot;&gt;
-        &lt;div id=&quot;text-wrapper&quot; style=&quot;top: 50%; left: 50%; position: absolute; color: #fff; transform: translate(-50%, -50%); text-align: center;
+    <div id="access" style="top: 0; left: 0; right:0; bottom: 0; background: #000; position: absolute; user-select: all; pointer-events: all;">
+        <div id="text-wrapper" style="top: 50%; left: 50%; position: absolute; color: #fff; transform: translate(-50%, -50%); text-align: center;
                 text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-weight: 400; line-height: 1.5em; font-size: large; white-space: nowrap;
                 user-select: none; pointer-events: none;
-            &quot;&gt;
+            ">
             Press here
-            &lt;br&gt;
+            <br>
             to enter the experience
-        &lt;/div&gt;
-    &lt;/div&gt;
+        </div>
+    </div>
 
-    &lt;div id=&quot;loader&quot; style=&quot;position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #fff; pointer-events: none; user-select: none;
-        transition: all .2s linear; display: none;&quot;&gt;
-        &lt;div style=&quot;left: 50%; top: 50%; position: absolute; transform: translate(-50%, -50%); text-align: center; width: 130px; height: 165px;
-            font-family: Arial, Helvetica, sans-serif; font-weight: 400; line-height: 1.5em; font-size: large;&quot; class=&quot;spinner-wrapper&quot;&gt;
-            &lt;img style=&quot;width: 130px; height: 130px; pointer-events: none; user-select: none;&quot; src=&quot;data/spin.gif&quot; alt=&quot;spin gif&quot;&gt;
-            &lt;br&gt;
+    <div id="loader" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #fff; pointer-events: none; user-select: none;
+        transition: all .2s linear; display: none;">
+        <div style="left: 50%; top: 50%; position: absolute; transform: translate(-50%, -50%); text-align: center; width: 130px; height: 165px;
+            font-family: Arial, Helvetica, sans-serif; font-weight: 400; line-height: 1.5em; font-size: large;" class="spinner-wrapper">
+            <img style="width: 130px; height: 130px; pointer-events: none; user-select: none;" src="data/spin.gif" alt="spin gif">
+            <br>
             Loading...
-        &lt;/div&gt;
-    &lt;/div&gt;
+        </div>
+    </div>
 
-    &lt;script&gt;
+    <script>
         const access = document.getElementById('access');
         const loader = document.getElementById('loader');
 
@@ -154,7 +137,7 @@
                 arToolkitContext = new THREEx.ArToolkitContext({
                     cameraParametersUrl: 'data/camera_para.dat',
                     detectionMode: 'mono_and_matrix',
-                    matrixCodeType: &quot;3x3&quot;,
+                    matrixCodeType: "3x3",
                     maxDetectionRate: 60,
                     canvasWidth: 640,
                     canvasHeight: 480
@@ -170,31 +153,31 @@
 
                 // Масив назв файлів .patt. Масив заповнюється в порядку додавання маркерів
                 // якщо замість .patt було додано баркод, на його місце в масив додається порожній рядок
-                const patternNames = [&quot;&quot; ,&quot;&quot; ,&quot;&quot;];
+                const patternNames = ["" ,"" ,""];
                 // Масив баркодів, заповнюється одночасно з масивом патернів
                 // якщо замість баркоду був доданий .patt, на його місце масив додається -1
                 const patternBarcode = [1 ,2 ,3];
                 // Масив типів контенту кожного маркера, заповнюється значеннями: зображення, модель, відео
-                const modes = [&quot;image&quot; ,&quot;image&quot; ,&quot;image&quot;];
+                const modes = ["image" ,"image" ,"image"];
                 // Масив файлів моделей, якщо немає моделі буде додано порожній рядок
-                const modelFiles = [&quot;&quot; ,&quot;&quot; ,&quot;&quot;];
+                const modelFiles = ["" ,"" ,""];
                 // Масив файлів зображень, якщо немає зображення буде додано також порожній рядок
-                const imageFiles = [&quot;photo1.jpg&quot; ,&quot;photo2.jpg&quot; ,&quot;photo3.jpg&quot;];
+                const imageFiles = ["photo1.jpg" ,"photo2.jpg" ,"photo3.jpg"];
                 // Масив файлів відео, якщо немає відео буде ще один порожній рядок
-                const videoFiles = [&quot;&quot; ,&quot;&quot; ,&quot;&quot;];
+                const videoFiles = ["" ,"" ,""];
                 // Масив файлів аудіо, якщо немає аудіо буде так само порожній рядок
-                const audioFiles = [&quot;voice1.mp3&quot; ,&quot;voice2.mp3&quot; ,&quot;voice3.mp3&quot;];
+                const audioFiles = ["voice1.mp3" ,"voice2.mp3" ,"voice3.mp3"];
                 // Масив опцій повтору аудіо та відео контенту, по дефолту для всіх буде false
-                const repeatOptions = [&quot;false&quot; ,&quot;false&quot; ,&quot;false&quot;];
+                const repeatOptions = ["false" ,"false" ,"false"];
   
                 // Створюємо масив для всіх маркерів
                 const markerRoots = [];
-                for (let i = 0; i &lt; 3; i++) {
+                for (let i = 0; i < 3; i++) {
                     markerRoots[i] = new THREE.Group();
                 }
   
                 // Проходимо по кожному маркеру з масиву і додаємо його в головний контейнер
-                for (let i = 0; i &lt; 3; i++) {
+                for (let i = 0; i < 3; i++) {
                     mainContainer.add(markerRoots[i]);
 
                     // Якщо поточний маркер – це баркод, створюємо AR контролер під баркод
@@ -206,7 +189,7 @@
                         patternsID.push(patternNames[i]);
                     } else {
                         let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
-                            type: &quot;barcode&quot;, barcodeValue: patternBarcode[i],
+                            type: "barcode", barcodeValue: patternBarcode[i],
                         })
                         barcodesID.push(patternBarcode[i]);
                     }
@@ -218,8 +201,8 @@
                             function onProgress(xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); }
                             function onError(xhr) { console.log('An error happened'); }
 
-                            contentPromises.push(new Promise((resolve) =&gt; {
-                                const test = new THREE.GLTF2Loader().load(`${modelFiles[i]}`, (response) =&gt; {
+                            contentPromises.push(new Promise((resolve) => {
+                                const test = new THREE.GLTF2Loader().load(`${modelFiles[i]}`, (response) => {
                                     const scene = response.scene;
                                     const object = scene.children[0];
                                     // Іноді модель не можна побачити з кількох причин, найчастіше варто збільшити чи зменшити у 100 разів.
@@ -233,19 +216,19 @@
                                     markerRoots[i].add(object);
                                     resolve(modelFiles[i])
                                 }, onProgress, onError)
-                            }).then((file) =&gt; {
+                            }).then((file) => {
                                 console.log(`File ${file} loaded`)
                             }))
                             break;
                         // Якщо контент під маркер це зображення
                         case 'image':
                             if (imageFiles[i]) {
-                                contentPromises.push(new Promise((resolve) =&gt; {
+                                contentPromises.push(new Promise((resolve) => {
                                     // Завантажуємо зображення
                                     let loader = new THREE.TextureLoader();
-                                    loader.load(`${imageFiles[i]}`, (texture) =&gt; {
+                                    loader.load(`${imageFiles[i]}`, (texture) => {
                                         let geometry1, ratio = texture.image.naturalWidth / texture.image.naturalHeight;
-                                        if (texture.image.naturalHeight &lt; texture.image.naturalWidth) {
+                                        if (texture.image.naturalHeight < texture.image.naturalWidth) {
                                             geometry1 = new THREE.PlaneBufferGeometry(ratio, 1);
                                         } else {
                                             geometry1 = new THREE.PlaneBufferGeometry(1, 1 / ratio);
@@ -258,7 +241,7 @@
                                         markerRoots[i].add(mesh1);
                                         resolve(imageFiles[i])
                                     });
-                                }).then(image =&gt; {
+                                }).then(image => {
                                     console.log(`File ${image} loaded`)
                                 }))
                             }
@@ -273,7 +256,7 @@
                             video.playsInline = true;
                             // Встановлюємо відео на автоповтор залежно від значення у масиві
                             if (repeatOptions[i]) {
-                                video.addEventListener('ended', () =&gt; {
+                                video.addEventListener('ended', () => {
                                     video.play();
                                 })
                             }
@@ -318,7 +301,7 @@
 
                     // Якщо є аудіо файли, налаштовуємо їх і додаємо в масив аудіо контенту.
                     if (audioFiles[i]) {
-                        contentPromises.push(new Promise((resolve, reject) =&gt; {
+                        contentPromises.push(new Promise((resolve, reject) => {
                             audioLoader.load(`${audioFiles[i]}`, function (buffer) {
                                 // Створюємо аудіо джерело
                                 let sound = new THREE.Audio(listener);
@@ -335,7 +318,7 @@
                                 }
                                 resolve(sound)
                             });
-                        }).then((sound) =&gt; {
+                        }).then((sound) => {
                             sound.play()
                             sound.stop()
                             console.log(`File ${sound.name} loaded`)
@@ -345,7 +328,7 @@
 
                 // Ховаємо лоадер після завантаження компонентів
                 Promise.all(contentPromises)
-                    .then(() =&gt; {
+                    .then(() => {
                         console.log('Most of the content loaded')
                         contentInitialized = true;
                         loader.style.opacity = '0';
@@ -357,8 +340,8 @@
 
             function checkController() {
                 if (controller) {
-                    mainContainer.traverse((object) =&gt; {
-                        if (object.isMesh &amp;&amp; object !== controller) {
+                    mainContainer.traverse((object) => {
+                        if (object.isMesh && object !== controller) {
                             if (detectCollisionCubes(object, controller)) {
                                 object.material.color.set('red')
                             } else {
@@ -391,34 +374,34 @@
                     arToolkitContext.update(arToolkitSource.domElement);
                     if (contentInitialized) {
                         if (barcodesID.length) {
-                            barcodesID.forEach((elem, index) =&gt; {
+                            barcodesID.forEach((elem, index) => {
                                 if (arToolkitContext.arController.barcodeMarkers[elem].inCurrent) {
                                     let sound = barcodesSound.get(elem);
-                                    if (sound &amp;&amp; !sound.isPlaying) sound.play();
+                                    if (sound && !sound.isPlaying) sound.play();
                                 } else {
                                     let sound = barcodesSound.get(elem);
-                                    if (sound &amp;&amp; sound.nodeName === 'VIDEO') {
+                                    if (sound && sound.nodeName === 'VIDEO') {
                                         if (!sound.paused) sound.pause()
                                     }
-                                    if (sound &amp;&amp; sound.isPlaying) sound.stop();
+                                    if (sound && sound.isPlaying) sound.stop();
                                 }
                             })
                         }
                         if (patternsID.length) {
-                            for (let index = 0; index &lt; patternsID.length; index++) {
+                            for (let index = 0; index < patternsID.length; index++) {
                                 if (arToolkitContext.arController.patternMarkers[index].inCurrent) {
                                     let patternID = (arToolkitContext.arController.patternMarkers[index].markerWidth - 1) * patternIdOffset - 1;
                                     patternID = Math.round(patternID)
                                     let sound = patternsSound.get(patternID);
-                                    if (sound &amp;&amp; !sound.isPlaying) sound.play();
+                                    if (sound && !sound.isPlaying) sound.play();
                                 } else {
                                     let patternID = (arToolkitContext.arController.patternMarkers[index].markerWidth - 1) * patternIdOffset - 1;
                                     patternID = Math.round(patternID)
                                     let sound = patternsSound.get(patternID);
-                                    if (sound &amp;&amp; sound.nodeName === 'VIDEO') {
+                                    if (sound && sound.nodeName === 'VIDEO') {
                                         if (!sound.paused) sound.pause()
                                     }
-                                    if (sound &amp;&amp; sound.isPlaying) sound.stop();
+                                    if (sound && sound.isPlaying) sound.stop();
                                 }
                             }
                         }
@@ -444,15 +427,13 @@
         }
 
         // Прибираємо блок після натискання на екран для дозволу аудіо програвання на iOS
-        access.addEventListener('click', () =&gt; {
+        access.addEventListener('click', () => {
             initiateExperience();
             document.body.removeChild(access);
             loader.style.display = 'block';
         });
-    &lt;/script&gt;
+    </script>
 
-&lt;/body&gt;
-
-&lt;/html&gt;</pre>
 </body>
+
 </html>
