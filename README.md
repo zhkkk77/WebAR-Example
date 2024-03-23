@@ -14,3 +14,11 @@
 ![image](https://github.com/zhkkk77/WebAR-Example/blob/Laboratory-work-3/photo_23.jpg)
 
 Рис. 3 -  Фрагмент екрану з рішення завдання 2.1.3 "Створити каталог з назвою «Laboratory-work-3». Перейти до каталогу."
+
+![image](https://github.com/zhkkk77/WebAR-Example/blob/Laboratory-work-3/photo_24.jpg)
+
+Рис. 4 -  Фрагмент екрану з рішення завдання 2.1.4 "В каталозі «Laboratory-work-3» створити порожній файл README.md, використовуючи команду інтерпретатору командного рядку Bash."
+
+
+
+
