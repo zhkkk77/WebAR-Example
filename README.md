@@ -27,7 +27,7 @@
 
 Рис. 6 -  Фрагмент екрану з рішення завдання 2.1.6 "Виконати операції з оновлення GitHub-репозиторію змінами Git-репозиторія через послідовність Git-команд add, commit із коментарем «Changed by Local Git» та push."
 
-![image]()
+![image](https://github.com/zhkkk77/WebAR-Example/blob/Laboratory-work-3/photo_27.jpg)
 
 Рис. 7 -  Фрагмент екрану з рішення завдання 2.1.7 "На веб-сервісі GitHub перейти до створеної гілки «Laboratory-work-3». Перейти до каталогу «Laboratory-work-3» та розпочати процес редагування файлу README.md"
 
