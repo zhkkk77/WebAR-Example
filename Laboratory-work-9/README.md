@@ -84,6 +84,7 @@
 Варіант 7
 Номери стовпчиків: 1,3
 Джерело даних: файл /etc/group
+
 ![image](https://github.com/OS-IS/ai232-zhuk/assets/162161463/6412e24b-cbda-4f3f-b396-5d785df1588f)
 
 ![image](https://github.com/OS-IS/ai232-zhuk/assets/162161463/dfce4f38-4925-4919-b5ab-3eb0985890c0)
